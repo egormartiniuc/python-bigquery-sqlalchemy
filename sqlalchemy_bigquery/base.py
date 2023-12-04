@@ -78,7 +78,7 @@ class TimePartitioning(sqlalchemy.sql.sqltypes.TypeEngine):
     
     TimePartitioningType = TimePartitioningType
     
-    def __init__(self, type_: str, field: str, expiration_ms: int = 31536000000, require_partition_filter: bool = True):
+    def __init__(self, type_: str, field: typing.Optional[str], expiration_ms: int = 31536000000, require_partition_filter: bool = True):
         self.type_ = type_
         self.field = field
         self.expiration_ms = expiration_ms
@@ -107,7 +107,7 @@ class TimePartitioning(sqlalchemy.sql.sqltypes.TypeEngine):
         return self.require_partition_filter
     
     @property
-    def oprtions(self) -> list[str]:
+    def options(self) -> typing.List[str]:
         return list(self)
     
     @classmethod
